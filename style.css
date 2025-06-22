@@ -1,0 +1,73 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #fff;
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2.5rem 3rem;
+    border-radius: 15px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    text-align: center;
+    width: 320px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+h1 {
+    margin-bottom: 1.5rem;
+    color: #f0e9ff;
+    font-weight: 700;
+    font-size: 1.8rem;
+}
+
+.upi-id {
+    font-weight: 600;
+    margin: 1.5rem 0;
+    font-size: 1.3rem;
+    color: #dcd6f7;
+    padding: 0.5rem 1rem;
+    border: 2px dashed #dcd6f7;
+    border-radius: 8px;
+    user-select: all;
+}
+
+#qrcode {
+    margin-top: 1.5rem;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    border: 4px solid #4a90e2;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(74, 144, 226, 0.6);
+    padding: 10px;
+    background-color: #f0f4f8;
+}
+
+#qrcode:hover {
+    transform: scale(1.1);
+}
+
+#payByAppBtn {
+    margin-top: 1.5rem;
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#payByAppBtn:hover {
+    background-color: #357ABD;
+}

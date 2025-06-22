@@ -15,26 +15,23 @@ document.addEventListener("DOMContentLoaded", function () {
         correctLevel: QRCode.CorrectLevel.H
     });
 
-    // Add event listener for Pay by App button
-// Get the button element
-var payByAppBtn = document.getElementById("payByAppBtn");
+    // Add event listeners for specific UPI app buttons
+    var phonePeBtn = document.getElementById("phonePeBtn");
+    var googlePayBtn = document.getElementById("googlePayBtn");
+    var paytmBtn = document.getElementById("paytmBtn");
 
-// Add click event listener
-payByAppBtn.addEventListener("click", function () {
-    var upiId = "anmolmalik2024@ybl"; // Your UPI ID
-    var payeeName = "Anmol Malik"; // Replace with your name (optional)
-    
-    // Generate UPI URL with encoded parameters
-    var upiUrl = "upi://pay?pa=" + encodeURIComponent(upiId) + 
-                "&pn=" + encodeURIComponent(payeeName) + 
-                 "&cu=INR"; // Currency (INR for Indian Rupees)
-    
-    // Redirect to UPI URL (opens supported apps like GPay/PhonePe)
-    window.location.href = upiUrl;
-    
-    // Fallback for browsers that don't support UPI links
-    setTimeout(function() {
-        alert("If the UPI app didn't open, please manually enter this UPI ID: " + upiId);
-    }, 1000);
+    phonePeBtn.addEventListener("click", function () {
+        var phonePeUrl = "phonepe://pay?pa=" + encodeURIComponent(upiId);
+        window.location.href = phonePeUrl;
+    });
+
+    googlePayBtn.addEventListener("click", function () {
+        var googlePayUrl = "tez://upi/pay?pa=" + encodeURIComponent(upiId);
+        window.location.href = googlePayUrl;
+    });
+
+    paytmBtn.addEventListener("click", function () {
+        var paytmUrl = "paytmmp://pay?pa=" + encodeURIComponent(upiId);
+        window.location.href = paytmUrl;
     });
 });

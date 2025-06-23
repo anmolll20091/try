@@ -1,6 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
     var upiId = "anmolmalik2024@ybl";
     var qrCodeContainer = document.getElementById("qrcode");
+    var amountInput = document.getElementById("amountInput");
+    var errorMessage = document.getElementById("errorMessage");
+    var bankAmountLimit = 10000; // Example bank amount limit
 
     // Clear any existing QR code
     qrCodeContainer.innerHTML = "";
@@ -20,18 +23,30 @@ document.addEventListener("DOMContentLoaded", function () {
     var googlePayBtn = document.getElementById("googlePayBtn");
     var paytmBtn = document.getElementById("paytmBtn");
 
+    function handlePaymentClick(baseUrl) {
+        var amount = parseFloat(amountInput.value);
+        if (isNaN(amount) || amount <= 0) {
+            errorMessage.textContent = "Please enter a valid amount.";
+            return;
+        }
+        if (amount > bankAmountLimit) {
+            errorMessage.textContent = "Bank amount limit exceeds.";
+            return;
+        }
+        errorMessage.textContent = "";
+        var paymentUrl = baseUrl + "?pa=" + encodeURIComponent(upiId) + "&am=" + amount.toFixed(2);
+        window.location.href = paymentUrl;
+    }
+
     phonePeBtn.addEventListener("click", function () {
-        var phonePeUrl = "phonepe://pay?pa=" + encodeURIComponent(upiId);
-        window.location.href = phonePeUrl;
+        handlePaymentClick("phonepe://pay");
     });
 
     googlePayBtn.addEventListener("click", function () {
-        var googlePayUrl = "tez://upi/pay?pa=" + encodeURIComponent(upiId);
-        window.location.href = googlePayUrl;
+        handlePaymentClick("tez://upi/pay");
     });
 
     paytmBtn.addEventListener("click", function () {
-        var paytmUrl = "paytmmp://pay?pa=" + encodeURIComponent(upiId);
-        window.location.href = paytmUrl;
+        handlePaymentClick("paytmmp://pay");
     });
 });

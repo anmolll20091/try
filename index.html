@@ -1,9 +1,10 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Add this meta tag in head section for smooth scrolling -->
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
     <title>Pay by QR Code</title>
     <link rel="stylesheet" href="style.css" />
 </head>
@@ -13,6 +14,9 @@
         <p>Scan the QR code below to pay to UPI ID:</p>
         <p class="upi-id">anmolmalik2024@ybl</p>
         <div id="qrcode"></div>
+        <label for="amountInput" class="amount-label">Enter Amount:</label>
+        <input type="number" id="amountInput" min="1" placeholder="Enter amount" />
+        <div id="errorMessage" class="error-message"></div>
         <div id="payByAppButtons">
             <button id="phonePeBtn" type="button">Pay with PhonePe</button>
             <button id="googlePayBtn" type="button">Pay with Google Pay</button>
